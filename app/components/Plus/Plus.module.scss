@@ -1,0 +1,111 @@
+:root {
+    --bg: #1c1d22;
+    --key-face: #2a2c33;
+    --key-face-top: #34363f;
+    --accent: #ff8a3d;
+    --accent-dim: #c9631f;
+    --shadow-dark: #0e0f12;
+  }
+
+.stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .key {
+    --size: 84px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 22px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(160deg, var(--key-face-top), var(--key-face));
+    box-shadow:
+      0 8px 0 var(--shadow-dark),
+      0 12px 18px rgba(0,0,0,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: transform 90ms ease, box-shadow 90ms ease;
+    padding: 0;
+  }
+
+  .key::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    background: radial-gradient(circle at 50% 30%, rgba(255,138,61,0.0) 0%, rgba(255,138,61,0.0) 100%);
+    transition: background 150ms ease;
+  }
+
+  .key .glyph {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .key .glyph::before,
+  .key .glyph::after {
+    content: "";
+    position: absolute;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: background 150ms ease, box-shadow 150ms ease;
+    box-shadow: 0 0 0 rgba(255,138,61,0);
+  }
+
+  /* horizontal bar */
+  .key .glyph::before {
+    width: 34px;
+    height: 6px;
+  }
+  /* vertical bar */
+  .key .glyph::after {
+    width: 6px;
+    height: 34px;
+  }
+
+  .key:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 10px 0 var(--shadow-dark),
+      0 16px 22px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .key:hover .glyph::before,
+  .key:hover .glyph::after {
+    background: #ffb27a;
+    box-shadow: 0 0 14px rgba(255,138,61,0.55);
+  }
+
+  .key:active {
+    transform: translateY(6px);
+    box-shadow:
+      0 2px 0 var(--shadow-dark),
+      0 4px 8px rgba(0,0,0,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .key:active .glyph::before,
+  .key:active .glyph::after {
+    background: var(--accent-dim);
+    box-shadow: 0 0 6px rgba(201,99,31,0.6);
+  }
+
+  .key:focus-visible {
+    outline: 2px solid #ffb27a;
+    outline-offset: 4px;
+  }
+
+  .label {
+    color: #6c6f7a;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
