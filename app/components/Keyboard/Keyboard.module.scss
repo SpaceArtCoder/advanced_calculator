@@ -1,3 +1,17 @@
+:root {
+    --bg: #1c1d21;
+    --key-bg: #2a2c32;
+    --key-bg-top: #34363d;
+    --key-text: #eef0f3;
+    --op-bg: #3a2f52;
+    --op-bg-top: #4a3d6b;
+    --op-glow: #9d7cff;
+    --clear-bg: #4a2020;
+    --clear-bg-top: #5e2929;
+    --clear-glow: #ff6b6b;
+    --key-glow: #6fa8ff;
+}
+
 .keyboard {
     width: 90%;
     outline: 1px solid rgb(21, 30, 39);
