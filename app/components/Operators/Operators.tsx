@@ -5,6 +5,7 @@ export default function Operators() {
     return (
         <div className={styles.operators}>
             <Plus />
+            <Minus />
         </div>
     )
 }

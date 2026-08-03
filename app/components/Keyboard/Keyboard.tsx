@@ -6,9 +6,9 @@ import Control from "../Control/Control"
 export default function Keyboard() {
     return (
         <div className={styles.keyboard}>
+            <Control />
             <Operators />
             <Operands />
-            <Control />
         </div>
     )
 }
