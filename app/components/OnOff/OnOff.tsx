@@ -1,4 +1,5 @@
-import styles from './OnOff.module.scss'
+// import styles from './OnOff.module.scss'
+import styles from '@/app/components/Keyboard/Keyboard.module.scss'
 
 export default function OnOff() {
     return (
