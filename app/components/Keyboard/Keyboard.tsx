@@ -7,8 +7,9 @@ export default function Keyboard() {
     return (
         <div className={styles.keyboard}>
             <Control />
-            <Operators />
             <Operands />
+            <Operators />
+            
         </div>
     )
 }
