@@ -41,6 +41,12 @@
     }
 
     .onoff {
-
+        width: 23%;
+        height: 98%;
+        border-radius: 2rem;
+        background-color: var(--clear-glow);
+        color: var(--bg);
+        font-size:medium;
+        font-weight: 800;
     }
 }
