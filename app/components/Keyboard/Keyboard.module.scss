@@ -7,7 +7,7 @@
     --op-bg-top: #4a3d6b;
     --op-glow: #9d7cff;
     --clear-bg: #4a2020;
-    --clear-bg-top: #5e2929;
+    --clear-bg-top: #b20e0e;
     --clear-glow: #ff6b6b;
     --key-glow: #6fa8ff;
 }
@@ -37,7 +37,12 @@
     }
 
     .clear {
-
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 2rem;
+        background-color: var(--clear-bg-top);
+        font-size: medium;
+        font-weight: 800;
     }
 
     .onoff {
