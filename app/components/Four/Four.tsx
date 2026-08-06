@@ -1,7 +1,7 @@
 import styles from '@/app/components/Keyboard/Keyboard.module.scss'
 
-export default function Three() {
+export default function Four() {
     return (
-        <button className={styles.three}>3</button>
+        <button className={styles.four}>4</button>
     )
 }
