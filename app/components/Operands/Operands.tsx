@@ -6,6 +6,7 @@ import Four from "../Four/Four"
 import Five from "../Five/Five"
 import Six from "../Six/Six"
 import Seven from "../Seven/Seven"
+import Eight from "../Eight/Eight"
 
 export default function Operands() {
     return (
@@ -17,6 +18,7 @@ export default function Operands() {
             <Five />
             <Six />
             <Seven />
+            <Eight />
         </div>
     )
 }
