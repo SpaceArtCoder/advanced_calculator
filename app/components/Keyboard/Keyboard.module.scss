@@ -140,7 +140,12 @@
     }
 
     .eight {
-
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 2rem;
+        font-size: medium;
+        font-weight: 800;
+        background-color: var(--key-bg);
     }
 
     .nine {
