@@ -1,7 +1,7 @@
 import styles from './Greeting.module.scss'
 
-export default function Greeting() {
+export default function Greeting({showHello}) {
     return (
-        <p className={styles.greeting}>Hello</p>
+        <p className={showHello ? `${styles.greeting} ${styles.show}` : styles.greeting}>Hello</p>
     )
 }
