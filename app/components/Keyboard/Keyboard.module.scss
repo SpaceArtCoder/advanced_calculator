@@ -2,7 +2,7 @@
     --bg: #1c1d21;
     --key-bg: #2a2c32;
     --key-bg-top: #34363d;
-    --key-text: #eef0f3;
+    --key-text: #5063a99c;
     --op-bg: #3a2f52;
     --op-bg-top: #4a3d6b;
     --op-glow: #9d7cff;
@@ -22,6 +22,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: var(--key-text);
+    background: linear-gradient(#0310427c, rgba(137, 187, 225, 0.776));
 
     .division {
         width: 2.5rem;
