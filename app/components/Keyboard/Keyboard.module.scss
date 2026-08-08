@@ -14,7 +14,7 @@
 
 .keyboard {
     width: 90%;
-    outline: 2px solid rgb(21, 30, 39);
+    // outline: 2px solid rgb(21, 30, 39);
     border-radius: 2.3rem;
     height: 15rem;
     margin: 0 auto;
@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     background-color: var(--key-text);
-    background: linear-gradient(#0310427c, rgba(137, 187, 225, 0.776));
+    background: linear-gradient(#0a143e3d, rgba(8, 44, 70, 0.332));
 
     .division {
         width: 2.5rem;
