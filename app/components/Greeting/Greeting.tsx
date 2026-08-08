@@ -1,6 +1,10 @@
 import styles from './Greeting.module.scss'
 
-export default function Greeting({showHello}) {
+interface GreetingProps {
+    showHello: boolean;
+}
+
+export default function Greeting({showHello}: GreetingProps) {
     return (
         <p className={showHello ? `${styles.greeting} ${styles.show}` : styles.greeting}>Hello</p>
     )
