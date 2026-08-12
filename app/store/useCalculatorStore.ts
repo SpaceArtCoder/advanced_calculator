@@ -10,7 +10,8 @@ interface CalculatorState {
 // Store
 export const useCalculatorStore = create<CalculatorState>((set) => ({
     // State variable
-    showHello: false,
+    // Greeting word isn't shown by default only after clicking the on/off button
+    showHello: false, 
 
     // Action to flip boolean value
     toggleShowHello: () => set((state) => ({showHello: !state.showHello})),

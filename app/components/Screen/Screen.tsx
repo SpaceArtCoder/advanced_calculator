@@ -2,14 +2,16 @@
 
 import styles from "./Screen.module.scss"
 import Greeting from "../Greeting/Greeting"
-import { useState } from "react"
+import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 
 export default function Screen() {
 
-    const [showHello, setShowHello] = useState(false); //Greeting word isn't shown by default only after clicking the on/off button
+    // Read state and grab actions
+    const showHello = useCalculatorStore((state) => state.showHello);
+    const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
 
     return (
-        <div onClick={() => setShowHello(true)} className={styles.screen}>
+        <div onClick={toggleShowHello} className={styles.screen}>
             <Greeting showHello = {showHello}/>
         </div>
     )
