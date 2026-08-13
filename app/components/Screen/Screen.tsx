@@ -8,10 +8,9 @@ export default function Screen() {
  
     // Read state and grab actions
     const showHello = useCalculatorStore((state) => state.showHello);
-    const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
 
     return (
-        <div onClick={toggleShowHello} className={styles.screen}>
+        <div className={styles.screen}>
             <Greeting showHello = {showHello}/>
         </div>
     )
