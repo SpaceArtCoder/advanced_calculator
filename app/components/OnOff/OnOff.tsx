@@ -8,6 +8,7 @@ export default function OnOff() {
     const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
 
     return (
+        // Turn on/off calculator button
         <button className={styles.onoff} onClick={toggleShowHello}>On/Off</button>
     )
 }

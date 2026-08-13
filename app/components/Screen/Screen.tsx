@@ -11,6 +11,7 @@ export default function Screen() {
 
     return (
         <div className={styles.screen}>
+            {/* Display a welcome message when turned on */}
             <Greeting showHello = {showHello}/>
         </div>
     )
