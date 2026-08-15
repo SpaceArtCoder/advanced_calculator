@@ -3,6 +3,7 @@ import Plus from "../Plus/Plus"
 import Minus from "../Minus/Minus"
 import Multiplication from "../Multiplication/Multiplication"
 import Division from "../Division/Division"
+import Radical from "../Radical/Radical"
 
 export default function Operators() {
     return (
@@ -11,6 +12,7 @@ export default function Operators() {
             <Minus />
             <Multiplication />
             <Division />
+            <Radical />
         </div>
     )
 }
