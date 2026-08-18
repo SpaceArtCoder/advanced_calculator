@@ -32,4 +32,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Action for explicitly set the first operand value
     setFirstNum: (value: number) => set({firstNum: value}),
 
+    // Action for explicitly set the second operand value
+    setSecondNum: (value: number) => set({secondNum: value}),
+
 }));
