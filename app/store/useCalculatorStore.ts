@@ -4,6 +4,7 @@ import {create} from 'zustand'
 interface CalculatorState {
     showHello: boolean;
     firstNum: null | number;
+    secondNum: null | number;
     toggleShowHello: () => void;
     setShowHello: (value: boolean) => void;
 }
@@ -16,6 +17,9 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     // First operand 
     firstNum: null,
+
+    // Second operand
+    secondNum: null,
 
 
     // Actions
