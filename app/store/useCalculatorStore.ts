@@ -29,4 +29,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Action to explicitly set true or false
     setShowHello: (value: boolean) => set({showHello: value}),
 
+    // Action for explicitly set the first operand value
+    setFirstNum: (value: number) => set({firstNum: value}),
+
 }));
