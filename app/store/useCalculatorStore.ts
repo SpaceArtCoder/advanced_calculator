@@ -3,6 +3,7 @@ import {create} from 'zustand'
 // Type for state and actions
 interface CalculatorState {
     showHello: boolean;
+    firstNum: null | number;
     toggleShowHello: () => void;
     setShowHello: (value: boolean) => void;
 }
@@ -13,7 +14,8 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Greeting word isn't shown by default only after clicking the on/off button
     showHello: false, 
 
-    
+    // First operand 
+    firstNum: null,
 
 
     // Actions
