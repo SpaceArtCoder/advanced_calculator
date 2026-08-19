@@ -17,11 +17,11 @@ export default function Screen() {
         // Only start a timer if showHello is currently true
         if (!showHello) return;
 
-        const interval = setTimeout(() => {
+        const greetingTimer = setTimeout(() => {
             toggleShowHello();
         }, 5000);
 
-        return () => clearTimeout(interval);
+        return () => clearTimeout(greetingTimer);
 
     }, [showHello, toggleShowHello]);
 
