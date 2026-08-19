@@ -8,9 +8,13 @@ import { useEffect } from "react"
 export default function Screen() {
  
     // Read state and grab actions
+    // Greeting message status
     const showHello = useCalculatorStore((state) => state.showHello);
 
     const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
+
+    // First operand value
+    const firstNum = useCalculatorStore((state) => state.firstNum);
 
 
     useEffect(() => {
@@ -29,6 +33,7 @@ export default function Screen() {
         <div className={styles.screen}>
             {/* Display a welcome message when turned on */}
             <Greeting showHello = {showHello}/>
+            
         </div>
     )
 }
