@@ -8,6 +8,7 @@ interface CalculatorState {
     toggleShowHello: () => void;
     setShowHello: (value: boolean) => void;
     setFirstNum: () => void;
+    setSecondNum: () => void;
 }
 
 // Store
