@@ -5,6 +5,7 @@ interface CalculatorState {
     showHello: boolean;
     firstNum: null | number;
     secondNum: null | number;
+    power: boolean;
     toggleShowHello: () => void;
     setShowHello: (value: boolean) => void;
     setFirstNum: (value: number) => void;
@@ -23,6 +24,9 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Second operand
     secondNum: null,
 
+    // Power is off by default
+    power: false,
+
 
     // Actions
     // Action to flip boolean value
@@ -36,5 +40,8 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     // Action for explicitly set the second operand value
     setSecondNum: (value: number) => set({secondNum: value}),
+
+    // Action to flip boolean value
+    setPower: () => set((state) => ({power: !state.power})),
 
 }));
