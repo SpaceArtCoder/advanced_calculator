@@ -8,9 +8,10 @@ import { useEffect } from "react"
 export default function Screen() {
  
     // Read state and grab actions
-    // Greeting message status
-    const showHello = useCalculatorStore((state) => state.showHello);
+    // Calculator power status
+    const power = useCalculatorStore((state) => state.power);
 
+    // Greeting message display control
     const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
 
     // First operand value
@@ -19,7 +20,7 @@ export default function Screen() {
 
     useEffect(() => {
         // Only start a timer if showHello is currently true
-        if (!showHello) return;
+        if (!power) return;
 
         const greetingTimer = setTimeout(() => {
             toggleShowHello();
@@ -27,12 +28,12 @@ export default function Screen() {
 
         return () => clearTimeout(greetingTimer);
 
-    }, [showHello, toggleShowHello]);
+    }, [power, toggleShowHello]);
 
     return (
         <div className={styles.screen}>
             {/* Display a welcome message when turned on */}
-            <Greeting showHello = {showHello}/>
+            <Greeting power = {power}/>
             
         </div>
     )

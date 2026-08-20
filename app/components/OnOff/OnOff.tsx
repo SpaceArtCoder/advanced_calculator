@@ -11,6 +11,6 @@ export default function OnOff() {
 
     return (
         // Turn on/off calculator button
-        <button className={styles.onoff} onClick={toggleShowHello}>On/Off</button>
+        <button className={styles.onoff} onClick={tooglePower}>On/Off</button>
     )
 }
