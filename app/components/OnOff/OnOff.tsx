@@ -6,20 +6,17 @@ import { useEffect } from 'react';
 
 export default function OnOff() {
 
+    const togglePower = useCalculatorStore((state) => state.togglePower);
+
     const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
 
-    const tooglePower = useCalculatorStore((state) => state.togglePower);
-
-    const power = useCalculatorStore((state) => state.power);
-
-
-    useEffect(() => {
-        if (power) toggleShowHello();
-
-    }, [power])
+    function func() {
+        togglePower();
+        toggleShowHello();
+    }
 
     return (
         // Turn on/off calculator button
-        <button className={styles.onoff} onClick={tooglePower}>On/Off</button>
+        <button className={styles.onoff} onClick={func}>On/Off</button>
     )
 }

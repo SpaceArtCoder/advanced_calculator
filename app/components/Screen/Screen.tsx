@@ -14,6 +14,8 @@ export default function Screen() {
     // Greeting message display control
     const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
 
+    const showHello = useCalculatorStore((state) => state.showHello);
+
     // First operand value
     const firstNum = useCalculatorStore((state) => state.firstNum);
 
@@ -33,7 +35,7 @@ export default function Screen() {
     return (
         <div className={styles.screen}>
             {/* Display a welcome message when turned on */}
-            <Greeting power = {power}/>
+            <Greeting power = {power} showHello = {showHello}/>
             
         </div>
     )
