@@ -2,7 +2,6 @@
 
 import styles from '@/app/components/Keyboard/Keyboard.module.scss'
 import { useCalculatorStore } from '@/app/store/useCalculatorStore'
-import { useEffect } from 'react';
 
 export default function OnOff() {
 
