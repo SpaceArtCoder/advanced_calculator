@@ -7,11 +7,11 @@ export default function OnOff() {
 
     const togglePower = useCalculatorStore((state) => state.togglePower);
 
-    const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
+    const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     function func() {
         togglePower();
-        toggleShowHello();
+        setShowHello(true);
     }
 
     return (

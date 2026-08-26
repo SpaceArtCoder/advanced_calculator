@@ -17,7 +17,7 @@ interface CalculatorState {
 export const useCalculatorStore = create<CalculatorState>((set) => ({
     // State variables
     // Greeting word isn't shown by default only after clicking the on/off button
-    showHello: false, 
+    showHello: true, 
 
     // First operand 
     firstNum: null,

@@ -12,7 +12,7 @@ export default function Screen() {
     const power = useCalculatorStore((state) => state.power);
 
     // Greeting message display control
-    const toggleShowHello = useCalculatorStore((state) => state.toggleShowHello);
+    const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     const showHello = useCalculatorStore((state) => state.showHello);
 
@@ -25,12 +25,12 @@ export default function Screen() {
         if (!power) return;
 
         const greetingTimer = setTimeout(() => {
-            toggleShowHello();
+            setShowHello(false);
         }, 5000);
 
         return () => clearTimeout(greetingTimer);
 
-    }, [power, toggleShowHello]);
+    }, [power, setShowHello]);
 
     return (
         <div className={styles.screen}>
