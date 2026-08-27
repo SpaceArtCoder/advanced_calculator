@@ -36,7 +36,6 @@ export default function Screen() {
         <div className={styles.screen}>
             {/* Display a welcome message when turned on until some operators are entered*/}
             {firstNum || <Greeting power = {power} showHello = {showHello}/>}
-            
         </div>
     )
 }
