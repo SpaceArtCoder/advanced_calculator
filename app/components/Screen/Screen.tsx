@@ -15,7 +15,7 @@ export default function Screen() {
     const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     const showHello = useCalculatorStore((state) => state.showHello);
-
+ 
     // First operand value
     const firstNum = useCalculatorStore((state) => state.firstNum);
 
