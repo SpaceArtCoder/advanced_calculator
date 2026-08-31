@@ -6,7 +6,7 @@ import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 export default function Operands() {
 
     // const setFirstNum = useCalculatorStore((state) => state.setFirstNum);
-    const setFinalExpression = useCalculatorStore((state) => state.setFinalExpresson);
+    const setFinalExpression = useCalculatorStore((state) => state.setFinalExpression);
 
     return (
         <div className={styles.operands}>
