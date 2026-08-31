@@ -3,7 +3,7 @@ import {create} from 'zustand'
 // Type for state and actions
 interface CalculatorState {
     showHello: boolean;
-    finalExpresson: null | string;
+    finalExpresson: string;
     // firstNum: null | number;
     // secondNum: null | number;
     power: boolean;
@@ -21,7 +21,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Greeting word isn't shown by default only after clicking the on/off button
     showHello: true, 
 
-    finalExpresson: null,
+    finalExpresson: '',
 
     // First operand 
     // firstNum: null,
@@ -41,7 +41,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     setShowHello: (value: boolean) => set({showHello: value}),
 
     // Action for explicitly set the final expresson value
-    setFinalExpresson: (value: string) => set({finalExpresson: value}),
+    setFinalExpresson: (value: string) => set((state) => ({finalExpresson: state.finalExpresson += value})),
 
     // Action for explicitly set the first operand value
     // setFirstNum: (value: number) => set({firstNum: value}),

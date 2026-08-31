@@ -15,6 +15,8 @@ export default function Screen() {
     const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     const showHello = useCalculatorStore((state) => state.showHello);
+
+    const finalExpression = useCalculatorStore((state) => state.finalExpresson);
  
     // First operand value
     // const firstNum = useCalculatorStore((state) => state.firstNum);
@@ -35,7 +37,7 @@ export default function Screen() {
     return (
         <div className={styles.screen}>
             {/* Display a welcome message when turned on until some operators are entered*/}
-            <Greeting power = {power} showHello = {showHello}/>
+            { finalExpression || <Greeting power = {power} showHello = {showHello}/>}
         </div>
     )
 }
