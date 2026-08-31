@@ -2,6 +2,7 @@ import styles from "./Operators.module.scss"
 
 export default function Operators() {
 
+    // Arithmetic signs shown on the keyboard
     const signArray = ['+','-','*','/','√'];
   
     return (
