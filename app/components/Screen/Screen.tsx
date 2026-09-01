@@ -2,6 +2,7 @@
 
 import styles from "./Screen.module.scss"
 import Greeting from "../Greeting/Greeting"
+import FinalExpression from "../FinalExpression/FinalExpression"
 import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 import { useEffect } from "react"
 
@@ -15,8 +16,6 @@ export default function Screen() {
     const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     const showHello = useCalculatorStore((state) => state.showHello);
-
-    const finalExpression = useCalculatorStore((state) => state.finalExpression);
  
     // First operand value
     // const firstNum = useCalculatorStore((state) => state.firstNum);
@@ -37,7 +36,9 @@ export default function Screen() {
     return (
         <div className={styles.screen}>
             {/* Display a welcome message when turned on until some operators are entered*/}
-            { finalExpression || <Greeting power = {power} showHello = {showHello}/>}
+            {power && !showHello ? <FinalExpression /> : power && showHello ? <Greeting power = {power} showHello = {showHello}/> : null}
+            
+            
         </div>
     )
 }
