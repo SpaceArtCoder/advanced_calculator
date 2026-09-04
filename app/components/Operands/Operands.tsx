@@ -5,13 +5,20 @@ import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 
 export default function Operands() {
 
+  function typeNums(num) {
+    setFinalExpression(num);
+    setShowHello(false);
+  }
+
     // const setFirstNum = useCalculatorStore((state) => state.setFirstNum);
     const setFinalExpression = useCalculatorStore((state) => state.setFinalExpression);
+
+    const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     return (
         <div className={styles.operands}>
             {['1','2','3','4','5','6','7','8','9','0'].map((num) => (
-                <button key={num} className={styles.numbers} onClick={() => setFinalExpression(num)}>{num}</button>
+                <button key={num} className={styles.numbers} onClick={typeNums}>{num}</button>
             ))}
         </div>
     )
