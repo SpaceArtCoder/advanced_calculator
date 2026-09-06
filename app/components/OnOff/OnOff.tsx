@@ -7,7 +7,7 @@ export default function OnOff() {
 
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
-    const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression)
+    const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
 
     const togglePower = useCalculatorStore((state) => state.togglePower);
 
@@ -16,10 +16,7 @@ export default function OnOff() {
     function func() {
         togglePower();
         setShowHello(true);
-        console.log("finalexpression" + ' ' + finalExpression);
         if (finalExpression != '') clearFinalExpression();
-        console.log("finalexpression after" + ' ' + finalExpression);
-
     }
 
     return (
