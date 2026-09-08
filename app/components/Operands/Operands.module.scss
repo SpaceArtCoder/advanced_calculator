@@ -14,5 +14,9 @@
         font-size: medium;
         font-weight: 800;
         background-color: var(--key-bg);
+
+        &:active {
+            background-color: rgb(246, 128, 3);
+        }
     }
 }
