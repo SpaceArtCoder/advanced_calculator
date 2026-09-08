@@ -6,6 +6,10 @@ export default function FinalExpression() {
 
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
+    function calculator() {
+        
+    }
+
     return (
         // The blinking cursor is displayed only when the field is empty
         <output className={styles.input}>{finalExpression || <BlinkingCursor />}</output>
