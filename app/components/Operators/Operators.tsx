@@ -3,10 +3,11 @@
 import styles from "./Operators.module.scss"
 import { useCalculatorStore } from "@/app/store/useCalculatorStore";
 
+export const signArray = ['+','-','*','/','√','='];
 export default function Operators() {
 
     // Arithmetic signs shown on the keyboard
-    const signArray = ['+','-','*','/','√','='];
+    
 
     const setFinalExpession = useCalculatorStore((state) => state.setFinalExpression);
   

@@ -3,13 +3,17 @@ import { useCalculatorStore } from '@/app/store/useCalculatorStore'
 import BlinkingCursor from '@/app/components/BlinkingCursor/BlinkingCursor'
 import { useEffect } from 'react';
 
+import {signArray} from '../Operators/Operators'
+
 export default function FinalExpression() {
 
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
     useEffect(() => {
         function calculator() {
-            console.log(finalExpression.indexOf('+', 0));
+            signArray.map((char) => {
+                console.log(finalExpression.indexOf(char, 0));
+            })
         }
 
         calculator();
