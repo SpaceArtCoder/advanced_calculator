@@ -26,7 +26,7 @@ export default function FinalExpression() {
 	const usedIndex = [];
 	
         function calculator() {
-            signArray.map((char) => {
+            targetChars.map((char) => {
                 signOrder[finalExpression.indexOf(char, 0)] = char;  
             })
             
