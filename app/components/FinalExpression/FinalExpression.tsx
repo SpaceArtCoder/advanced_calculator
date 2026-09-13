@@ -104,3 +104,82 @@ export default function FinalExpression() {
 
 //         calculator();
 // })
+
+
+
+
+
+
+
+
+// 2 + 2 * 2 - 7 + 8 + 79 - 6 / 4 * 3 + 2 / 9 + 2
+      
+      
+ 
+  
+  
+//   // Every operator result
+//   const operatorResult = [];
+  
+//   // Every used FinalExpression index
+//   const usedIndex = [];
+  
+//   (let i = 1; i < FinalExpression.length; i = i + 2) {
+  
+//   	if (FinalExpression[i] == '*' || FinalExpression[i] == '/') {
+  	
+//   		if (FinalExpression[i] == '*') {
+  		
+//   			if (!usedIndex.includes(y - 1) && !usedIndex.includes(y + 1)) {
+//   				operatorResult.push('' + (+FinalExpression[i - 1]) * (+FinalExpression[i + 1]));
+//   				usedIndex[i - 1] = i - 1;
+//   				usedIndex[i + 1] = i + 1;
+//   			}
+  			
+//   			else if (!usedIndex.includes(i - 1)) {
+  				
+//   			}
+  			
+//   			else if (!usedIndex.includes(i + 1)) {
+  			
+//   			}
+  			
+  			
+//   		}
+  		
+//   		else if (FinalExpression[i] == '/') {
+//   			operatorResult.push('' + (+FinalExpression[i - 1]) / (+FinalExpression[i + 1]));
+//   			usedIndex.push(i - 1);
+//   			usedIndex.push(i + 1);
+//   		}
+  		
+//   	}
+  	
+//   }
+  
+  
+//   (let y = 1; y < FinalExpression.length; y = y + 2) {
+  
+//   	if (FinalExpression[y] == '+' || FinalExpression[y] == '-') {
+  	
+//   		if (FinalExpression[y] == '+') {
+//   			if (!usedIndex.includes(y - 1) && !usedIndex.includes(y + 1)) {
+//   				operatorResult.push('' + (+FinalExpression[y - 1]) + (+FinalExpression[y + 1]));
+//   			}
+  			
+//   			else if (!usedIndex.includes(y - 1)) {
+  				
+//   			}
+  			
+//   		}
+  		
+//   		else if (FinalExpression[y] == '-') {
+//   			operatorResult.push('' + (+FinalExpression[y - 1]) - (+FinalExpression[y + 1]));
+//   		}
+  		
+//   	}
+//   }
+  
+  
+  
+  
