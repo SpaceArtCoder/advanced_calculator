@@ -16,6 +16,7 @@ export default function Operators() {
           {signArray.map((sign, index) => (
           <button key={index} className={styles.signs} onClick={() => setFinalExpession(sign)}>{sign}</button>
           ))}
+          <button className={styles.signs}>=</button>
         </div>
     )
 }
