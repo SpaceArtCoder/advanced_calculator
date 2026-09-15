@@ -45,7 +45,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     setFinalExpression: (value: string) => set((state) => ({finalExpression: state.finalExpression += value})),
 
     // Action for clearing the final expression value
-    clearFinalExpression : () => set({finalExpression: ''}),
+    clearFinalExpression: () => set({finalExpression: ''}),
 
     // Action for explicitly set the first operand value
     // setFirstNum: (value: number) => set({firstNum: value}),
