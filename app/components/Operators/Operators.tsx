@@ -36,25 +36,26 @@ export default function Operators() {
 				if (finalExpression[i] == '*') {
 		
 					if (!usedIndex.includes(i - 1) && !usedIndex.includes(i + 1)) {
-			
+						
 						// Mark used operand index
 						usedIndex.push(i - 1);
 						usedIndex.push(i + 1);
-			
+						
 						// Mark used operator index and its result
-						results.set(i, finalExpression[i - 1] * finalExpression[i + 1]);
+						results.set(i, +finalExpression[i - 1] * +finalExpression[i + 1]);
 
-                        console.log(finalExpression[i-1] * finalExpression[i+1]);
+                        console.log( 'result: ' + results.size);
+						
 
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-			
+                        if (results.size == ((finalExpression.length - 1) / 2) ) return setFinalExpession(results.get(i));
+						
 					}
-		
+					
 					else if (!usedIndex.includes(i - 1)) {
 		
 						usedIndex.push(i - 1);
 			
-						results.set(i, finalExpression[i - 1] * results.get(i + 2));
+						results.set(i, +finalExpression[i - 1] * results.get(i + 2));
 
                         if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
 		
@@ -64,7 +65,7 @@ export default function Operators() {
 		
 						usedIndex.push(i + 1);
 		
-						results.set(i, results.get(i - 2) * finalExpression[i + 1]);
+						results.set(i, results.get(i - 2) * +finalExpression[i + 1]);
 
                         if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
 		
@@ -89,7 +90,7 @@ export default function Operators() {
 						usedIndex.push(i - 1);
 						usedIndex.push(i + 1);
 			
-						results.set(i, finalExpression[i - 1] / finalExpression[i + 1]);
+						results.set(i, +finalExpression[i - 1] / +finalExpression[i + 1]);
 
                         if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
 			
@@ -100,7 +101,7 @@ export default function Operators() {
 		
 						usedIndex.push(i - 1);
 			
-						results.set(i, finalExpression[i - 1] / results.get(i + 2));
+						results.set(i, +finalExpression[i - 1] / results.get(i + 2));
 
                         if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
 			
@@ -112,7 +113,7 @@ export default function Operators() {
 		
 						usedIndex.push(i + 1);
 			
-						results.set(i, results.get(i - 2) / finalExpression[i + 1]);
+						results.set(i, results.get(i - 2) / +finalExpression[i + 1]);
 
                         if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
 		
@@ -146,6 +147,8 @@ export default function Operators() {
 						// Mark used operator index and its result
 						results.set(m, +finalExpression[m - 1] + +finalExpression[m + 1]);
 
+						console.log( 'result: ' + results.get(m));
+
 						// Check for the last operator that have to return the final result
 						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
 		
@@ -156,6 +159,8 @@ export default function Operators() {
 						usedIndex.push(m - 1);
 			
 						results.set(m, +finalExpression[m - 1] + results.get(m + 2));
+
+						console.log( 'result: ' + results.size);
 
 						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
 		
@@ -189,7 +194,7 @@ export default function Operators() {
 						usedIndex.push(m - 1);
 						usedIndex.push(m + 1);
 			
-						results.set(m, finalExpression[m - 1] - finalExpression[m + 1]);
+						results.set(m, +finalExpression[m - 1] - +finalExpression[m + 1]);
 
 						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
 
@@ -200,7 +205,7 @@ export default function Operators() {
 			
 						usedIndex.push(m - 1);
 			
-						results.set(m, finalExpression[m - 1] - results.get(m + 2));
+						results.set(m, +finalExpression[m - 1] - results.get(m + 2));
 
 						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
 		
@@ -211,7 +216,7 @@ export default function Operators() {
 		
 						usedIndex.push(m + 1);
 			
-						results.set(m, results.get(m - 2) - finalExpression[m + 1]);
+						results.set(m, results.get(m - 2) - +finalExpression[m + 1]);
 
 						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
 		
