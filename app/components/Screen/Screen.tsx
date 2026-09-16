@@ -33,10 +33,13 @@ export default function Screen() {
 
     }, [power, setShowHello]);
 
+    
+
     return (
         <div className={styles.screen}>
             {/* Display a welcome message when turned on until some operators are entered*/}
             {power && !showHello ? <FinalExpression /> : power && showHello ? <Greeting power = {power} showHello = {showHello}/> : null}
+            
             
             
         </div>

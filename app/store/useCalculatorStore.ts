@@ -22,7 +22,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Greeting word isn't shown by default only after clicking the on/off button
     showHello: true, 
 
-    finalExpression: '',
+    finalExpression: '2',
 
     // First operand 
     // firstNum: null,
