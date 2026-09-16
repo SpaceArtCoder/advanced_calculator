@@ -9,7 +9,7 @@ export default function FinalExpression() {
 
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
-    console.log(finalExpression.length);
+    console.log(finalExpression);
     
 
     return (
@@ -18,3 +18,5 @@ export default function FinalExpression() {
          <output className={styles.input}>{finalExpression}</output>
     )
 }
+
+// 2+2*2-7+8+79-6/4*3+2/9+2
