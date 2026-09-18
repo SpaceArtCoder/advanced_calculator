@@ -7,11 +7,13 @@ interface CalculatorState {
     // firstNum: null | number;
     // secondNum: null | number;
     power: boolean;
+    temporaryBuffer: string;
     toggleShowHello: () => void;
     togglePower: () => void;
     setShowHello: (value: boolean) => void;
     setFinalExpression: (value: string | number) => void;
     clearFinalExpression: () => void;
+    setTemporaryBuffer: (value: string) => void;
     // setFirstNum: (value: number) => void;
     // setSecondNum: (value: number) => void;
 }
@@ -32,6 +34,8 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     // Power is off by default
     power: false,
+
+    temporaryBuffer: '',
 
 
     // Actions
@@ -57,5 +61,8 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     // Action to flip boolean value
     togglePower: () => set((state) => ({power: !state.power})),
+
+    // Action to explicity set the temporary buffer value
+    setTemporaryBuffer: (value: string) => set((state) => ({temporaryBuffer: state.temporaryBuffer += value})),
 
 }));

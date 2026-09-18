@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from "react";
 import styles from "./Operators.module.scss"
 import { useCalculatorStore } from "@/app/store/useCalculatorStore";
 
@@ -13,6 +14,7 @@ export default function Operators() {
     
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
 
+
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
@@ -21,6 +23,7 @@ export default function Operators() {
         clearFinalExpression();
         calculator();
     }
+
 
 
     function calculator() {

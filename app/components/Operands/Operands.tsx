@@ -3,15 +3,25 @@
 import styles from "./Operands.module.scss"
 import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 
+
 export default function Operands() {
 
-  function typeNums(num: string) {
-    setFinalExpression(num);
-    setShowHello(false);
-  }
+
+  
+
+    const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
+
+    const setTemporaryBuffer = useCalculatorStore((state) => state.setTemporaryBuffer);
+
+
+    function typeNums(num: string) {
+        //setFinalExpression(num);
+        setTemporaryBuffer(num);
+        setShowHello(false);
+    }
 
     // const setFirstNum = useCalculatorStore((state) => state.setFirstNum);
-    const setFinalExpression = useCalculatorStore((state) => state.setFinalExpression);
+    //const setFinalExpression = useCalculatorStore((state) => state.setFinalExpression);
 
     const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
