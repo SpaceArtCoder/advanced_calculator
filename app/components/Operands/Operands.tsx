@@ -6,9 +6,6 @@ import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 
 export default function Operands() {
 
-
-  
-
     const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
 
     const setTemporaryBuffer = useCalculatorStore((state) => state.setTemporaryBuffer);
@@ -18,6 +15,7 @@ export default function Operands() {
         //setFinalExpression(num);
         setTemporaryBuffer(num);
         setShowHello(false);
+        console.log('buffer' + temporaryBuffer);
     }
 
     // const setFirstNum = useCalculatorStore((state) => state.setFirstNum);

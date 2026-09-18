@@ -11,13 +11,10 @@ export default function FinalExpression() {
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
     console.log(finalExpression);
     
-
     return (
         // The blinking cursor is displayed only when the field is empty
-        // <output className={styles.input}>{finalExpression || <BlinkingCursor />}</output>
-         <output className={styles.input}>{finalExpression}</output>
+        <output className={styles.input}>{finalExpression.length ? finalExpression : <BlinkingCursor />}</output>
     )
 }
 
 // 2+2*2-7+8+7-6/4*3+2/9+2
-               

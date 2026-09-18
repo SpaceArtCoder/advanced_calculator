@@ -14,6 +14,8 @@ export default function Operators() {
     
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
 
+	const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
+
 
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
@@ -24,6 +26,12 @@ export default function Operators() {
         calculator();
     }
 
+
+	function inputCharacters(sign: string) {
+		console.log('buffer ope' + temporaryBuffer);
+		setFinalExpession(temporaryBuffer);
+		setFinalExpession(sign);
+	}
 
 
     function calculator() {
@@ -243,7 +251,7 @@ export default function Operators() {
     return (
         <div className={styles.operators}>
           {signArray.map((sign, index) => (
-            <button key={index} className={styles.signs} onClick={() => setFinalExpession(sign)}>{sign}</button>
+            <button key={index} className={styles.signs} onClick={() => inputCharacters(sign)}>{sign}</button>
           ))}
           <button className={styles.signs} onClick={resultOutput}>=</button>
         </div>
