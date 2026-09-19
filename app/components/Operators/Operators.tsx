@@ -16,11 +16,12 @@ export default function Operators() {
 
 	const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
 
+	const clearTemporaryBuffer = useCalculatorStore((state) => state.clearTemporaryBuffer);
+
 
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
-	
 
     // Clear the expression and output the result
     function resultOutput() {
@@ -32,8 +33,8 @@ export default function Operators() {
 	function inputCharacters(sign: string) {
 		console.log('buffer ope' + temporaryBuffer);
 		setFinalExpession(temporaryBuffer);
-		setFinalExpession(sign); 
-
+		setFinalExpession(sign);
+		clearTemporaryBuffer();
 	}
 
 

@@ -14,6 +14,7 @@ interface CalculatorState {
     setFinalExpression: (value: string | number) => void;
     clearFinalExpression: () => void;
     setTemporaryBuffer: (value: string) => void;
+    clearTemporaryBuffer: () => void;
     // setFirstNum: (value: number) => void;
     // setSecondNum: (value: number) => void;
 }
