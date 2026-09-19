@@ -20,6 +20,8 @@ export default function Operators() {
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
+	
+
     // Clear the expression and output the result
     function resultOutput() {
         clearFinalExpression();
@@ -30,7 +32,8 @@ export default function Operators() {
 	function inputCharacters(sign: string) {
 		console.log('buffer ope' + temporaryBuffer);
 		setFinalExpession(temporaryBuffer);
-		setFinalExpession(sign);
+		setFinalExpession(sign); 
+
 	}
 
 

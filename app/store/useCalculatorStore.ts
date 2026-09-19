@@ -65,4 +65,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Action to explicity set the temporary buffer value
     setTemporaryBuffer: (value: string) => set((state) => ({temporaryBuffer: state.temporaryBuffer += value})),
 
+    // Action for xlearing the temporary buffer value
+    clearTemporaryBuffer: () => set({temporaryBuffer: ''}),
+
 }));
