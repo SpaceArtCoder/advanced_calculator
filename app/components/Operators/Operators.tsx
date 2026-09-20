@@ -162,7 +162,9 @@ export default function Operators() {
 						// Mark used operator index and its result
 						results.set(m, +finalExpression[m - 1] + +finalExpression[m + 1]);
 
-						console.log( 'result: ' + results.get(m));
+						console.log(finalExpression);
+
+
 
 						// Check for the last operator that have to return the final result
 						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));

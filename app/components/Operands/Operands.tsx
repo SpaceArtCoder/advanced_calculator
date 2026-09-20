@@ -15,7 +15,6 @@ export default function Operands() {
         //setFinalExpression(num);
         setTemporaryBuffer(num);
         setShowHello(false);
-        console.log('buffer' + temporaryBuffer);
     }
 
     // const setFirstNum = useCalculatorStore((state) => state.setFirstNum);

@@ -9,15 +9,14 @@ export default function FinalExpression() {
 
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
-    
+
     const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
     
-    console.log(finalExpression);
     
     return (
         // The blinking cursor is displayed only when the field is empty
         // <output className={styles.input}>{finalExpression.length ? finalExpression : <BlinkingCursor />}</output>
-        <output className={styles.input}>{temporaryBuffer ? temporaryBuffer : finalExpression ? finalExpression : <BlinkingCursor />}</output>
+        <output className={styles.input}>{temporaryBuffer || finalExpression.length ? [...finalExpression, temporaryBuffer] : <BlinkingCursor />}</output>
     )
 }
 // Сюда подставляется переменная состояния temporaryBuffer
