@@ -9,7 +9,7 @@ export default function FinalExpression() {
 
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
-
+    
     const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
     
     console.log(finalExpression);
