@@ -25,8 +25,10 @@ export default function Operators() {
 
     // Clear the expression and output the result
     function resultOutput() {
+		const expression = [...finalExpression, temporaryBuffer];
         clearFinalExpression();
-        calculator();
+        calculator(expression);
+		clearTemporaryBuffer();
     }
 
 
@@ -38,7 +40,7 @@ export default function Operators() {
 	}
 
 
-    function calculator() {
+    function calculator(finalExpression) {
 
         // Used operand index
 	    const usedIndex = [];
