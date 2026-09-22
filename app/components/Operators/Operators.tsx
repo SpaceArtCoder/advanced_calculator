@@ -145,6 +145,8 @@ export default function Operators() {
 			
 						results.set(i, results.get(i - 2) / +finalExpression[i + 1]);
 
+						results.set(i - 2, results.get(i - 2) / +finalExpression[i + 1]);
+
 						console.log(results);
 
                         if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
