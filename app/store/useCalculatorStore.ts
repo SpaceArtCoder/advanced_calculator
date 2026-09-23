@@ -14,6 +14,7 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     temporaryBuffer: '',
 
+
     // Actions
     // Action to flip boolean value
     toggleShowHello: () => set((state) => ({showHello: !state.showHello})),
@@ -24,7 +25,9 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
     // Action for explicitly set the final expresson value
     // setFinalExpression: (value: string) => set((state) => ({finalExpression: state.finalExpression += value})),
 
-    setFinalExpression: (value: string | number) => set((state) => ({finalExpression: [...state.finalExpression, value]})),
+    setFinalExpression: (value: string | number | (string | number)[]) => set((state) => ({finalExpression: Array.isArray(value)
+        ? [...state.finalExpression, ...value]
+        : [...state.finalExpression, value]})),
 
     // Action for clearing the final expression value
     clearFinalExpression: () => set({finalExpression: []}),
@@ -43,4 +46,5 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     // Action for xlearing the temporary buffer value
     clearTemporaryBuffer: () => set({temporaryBuffer: ''}),
+
 }));

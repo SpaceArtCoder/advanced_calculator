@@ -11,3 +11,4 @@ export interface CalculatorState {
     setTemporaryBuffer: (value: string) => void;
     clearTemporaryBuffer: () => void;
 }
+
