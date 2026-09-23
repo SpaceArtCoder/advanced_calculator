@@ -6,21 +6,13 @@ import { useCalculatorStore } from "@/app/store/useCalculatorStore"
 
 export default function Operands() {
 
-    const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
-
     const setTemporaryBuffer = useCalculatorStore((state) => state.setTemporaryBuffer);
-
+    const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     function typeNums(num: string) {
-        //setFinalExpression(num);
         setTemporaryBuffer(num);
         setShowHello(false);
     }
-
-    // const setFirstNum = useCalculatorStore((state) => state.setFirstNum);
-    //const setFinalExpression = useCalculatorStore((state) => state.setFinalExpression);
-
-    const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     return (
         <div className={styles.operands}>

@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from "react";
 import styles from "./Operators.module.scss"
 import { useCalculatorStore } from "@/app/store/useCalculatorStore";
-
 
 export default function Operators() {
     // Arithmetic signs shown on the keyboard
@@ -15,7 +13,6 @@ export default function Operators() {
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
-
     // Clear the expression and output the result
     function resultOutput() {
 		// const expression = [...finalExpression, temporaryBuffer];
@@ -26,12 +23,12 @@ export default function Operators() {
     }
 
 	// Converts numeric strings of the final expression to numbers
-	function stringConverter(array) {
-		let arr = [];
+	function stringConverter(array: (string | number)[]) {
+		let arr: (string | number)[] = [];
 		let i = 0;
 		while (i < array.length) {
 			if (array[i] != ' ')  {
-				arr = isNaN(array[i]) ? [...arr, array[i]] : [...arr, +array[i]];
+				arr = Number(array[i]) ? [...arr, +array[i]] : [...arr, array[i]];
 			}
 			i++;
 		}
@@ -44,18 +41,18 @@ export default function Operators() {
 		clearTemporaryBuffer();
 	}
 
-    function calculator(finalExpression) {
+    function calculator(finalExpression: (string | number)[]) {
         //Searching for / and * operators
 		for (let i = 0; i < finalExpression.length; i++) {
 			if (finalExpression[i] == '*') {	
-				let mult = finalExpression[i - 1] * finalExpression[i + 1];	
+				const mult = (finalExpression[i - 1] as number) * (finalExpression[i + 1] as number);	
 				finalExpression.splice(i, 2);	
 				finalExpression[i - 1] = mult;	
 				i = 0;	
 			}
 	
 			else if (finalExpression[i] == '/') {		
-				let dev = finalExpression[i - 1] / finalExpression[i + 1];
+				const dev = (finalExpression[i - 1] as number) / (finalExpression[i + 1] as number);
 				finalExpression.splice(i, 2);
 				finalExpression[i - 1] = dev;
 				i = 0;
@@ -65,23 +62,22 @@ export default function Operators() {
 		// Searching for + and - operators
 		for (let m = 0; m < finalExpression.length; m++) {	
 			if (finalExpression[m] == '+') {		
-				let add = finalExpression[m - 1] + finalExpression[m + 1];
+				const add = (finalExpression[m - 1] as number) + (finalExpression[m + 1] as number);
 				finalExpression.splice(m, 2);
 				finalExpression[m - 1] = add;
 				m = 0;
 			}
 				
 			else if (finalExpression[m] == '-') {	
-				let sub = finalExpression[m - 1] - finalExpression[m + 1];		
+				const sub = (finalExpression[m - 1] as number) - (finalExpression[m + 1] as number);		
 				finalExpression.splice(m, 2);
 				finalExpression[m - 1] = sub;
 				m = 0;
 			}
 		}
-		return setFinalExpession(finalExpression);
+		setFinalExpession(finalExpression);
 	} 
   
-
     return (
         <div className={styles.operators}>
           {signArray.map((sign, index) => (
