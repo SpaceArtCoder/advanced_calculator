@@ -6,31 +6,37 @@ import { useCalculatorStore } from "@/app/store/useCalculatorStore";
 
 
 export default function Operators() {
-    
     // Arithmetic signs shown on the keyboard
     const signArray = ['+','-','*','/','√'];
-
     const setFinalExpession = useCalculatorStore((state) => state.setFinalExpression);
-    
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
-
 	const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
-
 	const clearTemporaryBuffer = useCalculatorStore((state) => state.clearTemporaryBuffer);
-
-
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
 
 
     // Clear the expression and output the result
     function resultOutput() {
-		const expression = [...finalExpression, temporaryBuffer];
+		// const expression = [...finalExpression, temporaryBuffer];
+		const expression = stringConverter([...finalExpression, temporaryBuffer]);
         clearFinalExpression();
         calculator(expression);
 		clearTemporaryBuffer();
     }
 
+	// Converts numeric strings of the final expression to numbers
+	function stringConverter(array) {
+		let arr = [];
+		let i = 0;
+		while (i < array.length) {
+			if (array[i] != ' ')  {
+				arr = isNaN(array[i]) ? [...arr, array[i]] : [...arr, +array[i]];
+			}
+			i++;
+		}
+		return arr;
+	}
 
 	function inputCharacters(sign: string) {
 		console.log('buffer ope' + temporaryBuffer);
@@ -39,260 +45,48 @@ export default function Operators() {
 		clearTemporaryBuffer();
 	}
 
-
     function calculator(finalExpression) {
-
-        // Used operand index
-	    const usedIndex = [];
-	    // Used operator index and results
-	    const results = new Map();
-
-			//Searching for / and * operators
-            for (let i = 1; i < finalExpression.length; i = i + 2) {
-
-				if (finalExpression[i] == '*') {
-		
-					if (!usedIndex.includes(i - 1) && !usedIndex.includes(i + 1)) {
-						
-						// Mark used operand index
-						usedIndex.push(i - 1);
-						usedIndex.push(i + 1);
-						
-						// Mark used operator index and its result
-						results.set(i, +finalExpression[i - 1] * +finalExpression[i + 1]);
-
-                        console.log(results);
-						
-
-                        if (results.size == ((finalExpression.length - 1) / 2) ) return setFinalExpession(results.get(i));
-						
-					}
-					
-					else if (!usedIndex.includes(i - 1)) {
-		
-						usedIndex.push(i - 1);
-			
-						results.set(i, +finalExpression[i - 1] * results.get(i + 2));
-
-						console.log(results);
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-		
-					}
-		
-					else if (!usedIndex.includes(i + 1)) {
-		
-						usedIndex.push(i + 1);
-		
-						results.set(i, results.get(i - 2) * +finalExpression[i + 1]);
-
-						results.set(i - 2, results.get(i - 2) * +finalExpression[i + 1])
-
-						console.log(results);
-
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-		
-					}
-		
-					else {
-		
-						results.set(i, results.get(i - 2) * results.get(i + 2));
-
-						console.log(results);
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-		
-					}
-		
-				}
-	
-	
-				else if (finalExpression[i] == '/') {
-		
-					// If the both operands are available
-					if (!usedIndex.includes(i - 1) && !usedIndex.includes(i + 1)) {
-			
-						usedIndex.push(i - 1);
-						usedIndex.push(i + 1);
-			
-						results.set(i, +finalExpression[i - 1] / +finalExpression[i + 1]);
-
-						console.log(results);
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-			
-					}
-		
-					// If first operand is available
-					else if (!usedIndex.includes(i - 1)) {
-		
-						usedIndex.push(i - 1);
-			
-						results.set(i, +finalExpression[i - 1] / results.get(i + 2));
-
-						console.log(results);
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-			
-		
-					}
-		
-					// If second operand is available
-					else if (!usedIndex.includes(i + 1)) {
-		
-						usedIndex.push(i + 1);
-			
-						results.set(i, results.get(i - 2) / +finalExpression[i + 1]);
-
-						results.set(i - 2, results.get(i - 2) / +finalExpression[i + 1]);
-
-						console.log(results);
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-		
-					}
-		
-					// If all operands are used
-					else {
-			
-						results.set(i, results.get(i - 2) / results.get(i + 2));
-
-						console.log(results);
-
-                        if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(i));
-		
-					}
-		
-				}
-	
+        //Searching for / and * operators
+		for (let i = 0; i < finalExpression.length; i++) {
+			if (finalExpression[i] == '*') {	
+				let mult = finalExpression[i - 1] * finalExpression[i + 1];	
+				finalExpression.splice(i, 2);	
+				finalExpression[i - 1] = mult;	
+				console.log(finalExpression);	
+				i = 0;	
 			}
-
-
-			//Searching for + and - operators
-			for (let m = 1; m < finalExpression.length; m = m + 2) {
-
-				if (finalExpression[m] == '+') {
-		
-					if (!usedIndex.includes(m - 1) && !usedIndex.includes(m + 1)) {
-			
-						// Mark used operand index
-						usedIndex.push(m - 1);
-						usedIndex.push(m + 1);
-			
-						// Mark used operator index and its result
-						results.set(m, +finalExpression[m - 1] + +finalExpression[m + 1]);
-
-						console.log(results);
-
-
-
-						// Check for the last operator that have to return the final result
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-					else if (!usedIndex.includes(m - 1)) {
-		
-						usedIndex.push(m - 1);
-			
-						results.set(m, +finalExpression[m - 1] + results.get(m + 2));
-
-						results.set(m + 2, +finalExpression[m - 1] + results.get(m + 2))
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-					else if (!usedIndex.includes(m + 1)) {
-		
-						usedIndex.push(m + 1);
-		
-						results.set(m, results.get(m - 2) + +finalExpression[m + 1]);
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-					else {
-		
-						results.set(m, results.get(m - 2) + results.get(m + 2));
-
-						results.set(m + 2, results.get(m - 2) + results.get(m + 2));
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-				}
 	
-				else if (finalExpression[m] == '-') {
-		
-					// If the both operands are available
-					if (!usedIndex.includes(m - 1) && !usedIndex.includes(m + 1)) {
-			
-						usedIndex.push(m - 1);
-						usedIndex.push(m + 1);
-			
-						results.set(m, +finalExpression[m - 1] - +finalExpression[m + 1]);
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-
-					}
-		
-					// If first operand is available
-					else if (!usedIndex.includes(m - 1)) {
-			
-						usedIndex.push(m - 1);
-			
-						results.set(m, +finalExpression[m - 1] - results.get(m + 2));
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-					// If second operand is available
-					else if (!usedIndex.includes(m + 1)) {
-		
-						usedIndex.push(m + 1);
-			
-						results.set(m, results.get(m - 2) - +finalExpression[m + 1]);
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-					// If all operands are used
-					else {
-			
-						results.set(m, results.get(m - 2) - results.get(m + 2));
-
-						results.set(m + 4, results.get(m - 2) - results.get(m + 2));
-
-						console.log(results);
-
-						if (results.size == (finalExpression.length - 1) / 2 ) return setFinalExpession(results.get(m));
-		
-					}
-		
-				}
-
+			else if (finalExpression[i] == '/') {		
+				let dev = finalExpression[i - 1] / finalExpression[i + 1];
+				finalExpression.splice(i, 2);
+				finalExpression[i - 1] = dev;
+				console.log(finalExpression);	
+				i = 0;
 			}
-
-        }
+		}
+			
+		// Searching for + and - operators
+		for (let m = 0; m < finalExpression.length; m++) {	
+			if (finalExpression[m] == '+') {		
+				let add = finalExpression[m - 1] + finalExpression[m + 1];
+				finalExpression.splice(m, 2);
+				finalExpression[m - 1] = add;
+				console.log(finalExpression);
+				m = 0;
+			}
+				
+			else if (finalExpression[m] == '-') {	
+				let sub = finalExpression[m - 1] - finalExpression[m + 1];		
+				finalExpression.splice(m, 2);
+				finalExpression[m - 1] = sub;
+				console.log(finalExpression);	
+				m = 0;
+			}
+		}
+		return setFinalExpession(finalExpression);
+	} 
   
+	
     return (
         <div className={styles.operators}>
           {signArray.map((sign, index) => (
