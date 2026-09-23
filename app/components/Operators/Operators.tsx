@@ -39,7 +39,6 @@ export default function Operators() {
 	}
 
 	function inputCharacters(sign: string) {
-		console.log('buffer ope' + temporaryBuffer);
 		setFinalExpession(temporaryBuffer);
 		setFinalExpession(sign);
 		clearTemporaryBuffer();
@@ -52,7 +51,6 @@ export default function Operators() {
 				let mult = finalExpression[i - 1] * finalExpression[i + 1];	
 				finalExpression.splice(i, 2);	
 				finalExpression[i - 1] = mult;	
-				console.log(finalExpression);	
 				i = 0;	
 			}
 	
@@ -60,7 +58,6 @@ export default function Operators() {
 				let dev = finalExpression[i - 1] / finalExpression[i + 1];
 				finalExpression.splice(i, 2);
 				finalExpression[i - 1] = dev;
-				console.log(finalExpression);	
 				i = 0;
 			}
 		}
@@ -71,7 +68,6 @@ export default function Operators() {
 				let add = finalExpression[m - 1] + finalExpression[m + 1];
 				finalExpression.splice(m, 2);
 				finalExpression[m - 1] = add;
-				console.log(finalExpression);
 				m = 0;
 			}
 				
@@ -79,14 +75,13 @@ export default function Operators() {
 				let sub = finalExpression[m - 1] - finalExpression[m + 1];		
 				finalExpression.splice(m, 2);
 				finalExpression[m - 1] = sub;
-				console.log(finalExpression);	
 				m = 0;
 			}
 		}
 		return setFinalExpession(finalExpression);
 	} 
   
-	
+
     return (
         <div className={styles.operators}>
           {signArray.map((sign, index) => (

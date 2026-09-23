@@ -1,23 +1,5 @@
 import {create} from 'zustand'
-
-// Type for state and actions
-interface CalculatorState {
-    showHello: boolean;
-    finalExpression: (string | number)[];
-    // firstNum: null | number;
-    // secondNum: null | number;
-    power: boolean;
-    temporaryBuffer: string;
-    toggleShowHello: () => void;
-    togglePower: () => void;
-    setShowHello: (value: boolean) => void;
-    setFinalExpression: (value: string | number) => void;
-    clearFinalExpression: () => void;
-    setTemporaryBuffer: (value: string) => void;
-    clearTemporaryBuffer: () => void;
-    // setFirstNum: (value: number) => void;
-    // setSecondNum: (value: number) => void;
-}
+import type { CalculatorState } from '../types/calculator';
 
 // Store
 export const useCalculatorStore = create<CalculatorState>((set) => ({
@@ -27,17 +9,10 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     finalExpression: [],
 
-    // First operand 
-    // firstNum: null,
-
-    // Second operand
-    // secondNum: null,
-
     // Power is off by default
     power: false,
 
     temporaryBuffer: '',
-
 
     // Actions
     // Action to flip boolean value
@@ -68,5 +43,4 @@ export const useCalculatorStore = create<CalculatorState>((set) => ({
 
     // Action for xlearing the temporary buffer value
     clearTemporaryBuffer: () => set({temporaryBuffer: ''}),
-
 }));
