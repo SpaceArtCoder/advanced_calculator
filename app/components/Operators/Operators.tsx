@@ -42,6 +42,15 @@ export default function Operators() {
 	}
 
     function calculator(finalExpression: (string | number)[]) {
+		// Searching for √ operator
+		for (let r = 0; r < finalExpression.length; r++) {
+        	if (finalExpression[r] == '√') {
+        		const rad = Math.sqrt(finalExpression[r + 1] as number);
+        		finalExpression.splice(r, 1);
+        		finalExpression[r] = rad;
+				r = 0;
+        	}
+        }
         //Searching for / and * operators
 		for (let i = 0; i < finalExpression.length; i++) {
 			if (finalExpression[i] == '*') {	
@@ -68,8 +77,8 @@ export default function Operators() {
 				m = 0;
 			}
 				
-			else if (finalExpression[m] == '-') {	
-				const sub = (finalExpression[m - 1] as number) - (finalExpression[m + 1] as number);		
+			else if (finalExpression[m] == '-') {
+				const sub = (finalExpression[m - 1] as number) - (finalExpression[m + 1] as number);
 				finalExpression.splice(m, 2);
 				finalExpression[m - 1] = sub;
 				m = 0;
