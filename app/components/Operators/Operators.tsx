@@ -4,6 +4,7 @@ import styles from "./Operators.module.scss"
 import { useCalculatorStore } from "@/app/store/useCalculatorStore";
 
 export default function Operators() {
+
     // Arithmetic signs shown on the keyboard
     const signArray = ['+','-','*','/','√'];
     const setFinalExpession = useCalculatorStore((state) => state.setFinalExpression);
@@ -15,47 +16,64 @@ export default function Operators() {
 
     // Clear the expression and output the result
     function resultOutput() {
+
 		// const expression = [...finalExpression, temporaryBuffer];
 		const expression = stringConverter([...finalExpression, temporaryBuffer]);
         clearFinalExpression();
         calculator(expression);
 		clearTemporaryBuffer();
+
     }
 
 	// Converts numeric strings of the final expression to numbers
 	function stringConverter(array: (string | number)[]) {
+
 		let arr: (string | number)[] = [];
 		let i = 0;
+
 		while (i < array.length) {
-			if (array[i] != ' ')  {
+			// if (array[i] != ' ')  {
 				arr = Number(array[i]) ? [...arr, +array[i]] : [...arr, array[i]];
-			}
+			// }
 			i++;
 		}
+
 		return arr;
+
 	}
 
 	function inputCharacters(sign: string) {
+
 		setFinalExpession(temporaryBuffer);
 		setFinalExpession(sign);
 		clearTemporaryBuffer();
+
 	}
 
     function calculator(finalExpression: (string | number)[]) {
+
 		// Searching for √ operator
 		for (let r = 0; r < finalExpression.length; r++) {
+
         	if (finalExpression[r] == '√') {
-            if (finalExpression[r + 1] != '-') {
-              const rad = Math.sqrt(finalExpression[r + 1] as number);
-        		  finalExpression.splice(r, 1);
-        		  finalExpression[r] = rad;
-				      r = 0;
-            }
-            else setFinalExpression('Error');	
-        	}
+				if (finalExpression[r + 2] != '-') {
+					const rad = Math.sqrt(finalExpression[r + 1] as number);
+					finalExpression.splice(r, 1);
+					finalExpression[r] = rad;
+					r = 0;
+				}
+
+				else {
+					// finalExpression.splice(r, 1);
+					setFinalExpession('Error');	
+					return;
+				}
+			}
         }
+
         //Searching for / and * operators
 		for (let i = 0; i < finalExpression.length; i++) {
+
 			if (finalExpression[i] == '*') {	
 				const mult = (finalExpression[i - 1] as number) * (finalExpression[i + 1] as number);	
 				finalExpression.splice(i, 2);	
@@ -73,6 +91,7 @@ export default function Operators() {
 			
 		// Searching for + and - operators
 		for (let m = 0; m < finalExpression.length; m++) {	
+
 			if (finalExpression[m] == '+') {		
 				const add = (finalExpression[m - 1] as number) + (finalExpression[m + 1] as number);
 				finalExpression.splice(m, 2);
@@ -87,7 +106,9 @@ export default function Operators() {
 				m = 0;
 			}
 		}
+
 		setFinalExpession(finalExpression);
+
 	} 
   
     return (
