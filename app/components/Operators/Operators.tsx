@@ -45,10 +45,13 @@ export default function Operators() {
 		// Searching for √ operator
 		for (let r = 0; r < finalExpression.length; r++) {
         	if (finalExpression[r] == '√') {
-        		const rad = Math.sqrt(finalExpression[r + 1] as number);
-        		finalExpression.splice(r, 1);
-        		finalExpression[r] = rad;
-				r = 0;
+            if (finalExpression[r + 1] != '-') {
+              const rad = Math.sqrt(finalExpression[r + 1] as number);
+        		  finalExpression.splice(r, 1);
+        		  finalExpression[r] = rad;
+				      r = 0;
+            }
+            else setFinalExpression('Error');	
         	}
         }
         //Searching for / and * operators
