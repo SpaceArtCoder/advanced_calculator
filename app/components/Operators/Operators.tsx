@@ -17,7 +17,6 @@ export default function Operators() {
     // Clear the expression and output the result
     function resultOutput() {
 
-		// const expression = [...finalExpression, temporaryBuffer];
 		const expression = stringConverter([...finalExpression, temporaryBuffer]);
         clearFinalExpression();
         calculator(expression);
@@ -46,7 +45,8 @@ export default function Operators() {
 
 		setFinalExpession(temporaryBuffer);
 		setFinalExpession(sign);
-		clearTemporaryBuffer();
+		// Cleared only if the last number was entered
+		if (temporaryBuffer) clearTemporaryBuffer();
 
 	}
 
