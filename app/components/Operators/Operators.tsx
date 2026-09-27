@@ -10,6 +10,7 @@ export default function Operators() {
     const setFinalExpession = useCalculatorStore((state) => state.setFinalExpression);
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
 	const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
+	const setTemporaryBuffer = useCalculatorStore((state) => state.setTemporaryBuffer);
 	const clearTemporaryBuffer = useCalculatorStore((state) => state.clearTemporaryBuffer);
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
@@ -27,13 +28,26 @@ export default function Operators() {
 	// Converts numeric strings of the final expression to numbers
 	function stringConverter(array: (string | number)[]) {
 
+		// Test code
+		// const str = '2+2+7*3/5-3+2*2*2*6-2+√6-9+2';
+		// let m = 0;
+		// while (m < str.length) {
+		// 	array.push(str[m]);
+		// 	m++;
+		// }
+		// array = ['2','+','2','+','7','*','3','/','5','-','3','+','2','*','2','*','2','*','6','-','2','+','','√','6','-','9','+','2'];
+		//
+
 		let arr: (string | number)[] = [];
 		let i = 0;
 
 		while (i < array.length) {
-			// if (array[i] != ' ')  {
+			if (array[i] != '')  {
 				arr = Number(array[i]) ? [...arr, +array[i]] : [...arr, array[i]];
-			// }
+				// if (array[i] == '-' && (i == 0 || array[i - 1] != +array[i - 1])) {
+				// 	arr[i] += arr
+				// }
+			}
 			i++;
 		}
 
@@ -42,6 +56,11 @@ export default function Operators() {
 	}
 
 	function inputCharacters(sign: string) {
+		// If a negative number is entered
+		if (!temporaryBuffer && (sign == '-')) {
+			setTemporaryBuffer(sign);
+			return;
+		}
 
 		setFinalExpession(temporaryBuffer);
 		setFinalExpession(sign);
@@ -56,7 +75,7 @@ export default function Operators() {
 		for (let r = 0; r < finalExpression.length; r++) {
 
         	if (finalExpression[r] == '√') {
-				if (finalExpression[r + 2] != '-') {
+				if (finalExpression[r + 1] != '') {
 					const rad = Math.sqrt(finalExpression[r + 1] as number);
 					finalExpression.splice(r, 1);
 					finalExpression[r] = rad;
@@ -64,7 +83,6 @@ export default function Operators() {
 				}
 
 				else {
-					// finalExpression.splice(r, 1);
 					setFinalExpession('Error');	
 					return;
 				}
@@ -106,7 +124,7 @@ export default function Operators() {
 				m = 0;
 			}
 		}
-
+		console.log(finalExpression);
 		setFinalExpession(finalExpression);
 
 	} 
