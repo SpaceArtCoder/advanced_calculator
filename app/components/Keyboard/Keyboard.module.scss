@@ -74,4 +74,13 @@
         font-size:medium;
         font-weight: 800;
     }
+
+    .clearLastNum {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 2rem;
+        background-color: var(--clear-last);
+        font-size: 24px;
+        font-weight: 800;
+    }
 }

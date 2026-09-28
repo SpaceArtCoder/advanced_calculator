@@ -59,6 +59,7 @@ export default function Operators() {
 		// If a negative number is entered
 		if (!temporaryBuffer && (sign == '-')) {
 			setTemporaryBuffer(sign);
+			// To avoid repeating the '-' sign
 			return;
 		}
 
