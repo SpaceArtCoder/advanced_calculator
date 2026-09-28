@@ -56,8 +56,8 @@ export default function Operators() {
 	}
 
 	function inputCharacters(sign: string) {
-		// If a negative number is entered
-		if (!temporaryBuffer && (sign == '-')) {
+		// If a negative number is entered but the temporaryBuffer is empty and the finalExpression's first element is a '-' sign
+		if (!temporaryBuffer && (sign == '-') && (finalExpression[0] == '-')) {
 			setTemporaryBuffer(sign);
 			// To avoid repeating the '-' sign
 			return;

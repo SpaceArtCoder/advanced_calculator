@@ -9,18 +9,28 @@ export default function OnOff() {
 
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
 
+    const clearTemporaryBuffer = useCalculatorStore((state) => state.clearTemporaryBuffer);
+
     const togglePower = useCalculatorStore((state) => state.togglePower);
+
+    const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
 
     const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
-    function func() {
+    // Pressing the On/Off button clears the old values
+    function initialFinalClearing() {
+
         togglePower();
         setShowHello(true);
-        if (finalExpression != '') clearFinalExpression();
+
+        if (finalExpression.length || temporaryBuffer) {
+            clearFinalExpression();
+            clearTemporaryBuffer();
+        }
     }
 
     return (
         // Turn on/off calculator button
-        <button className={styles.onoff} onClick={func}>On/Off</button>
+        <button className={styles.onoff} onClick={initialFinalClearing}>On/Off</button>
     )
 }
