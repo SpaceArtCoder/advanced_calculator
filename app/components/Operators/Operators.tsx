@@ -30,25 +30,12 @@ export default function Operators() {
 	// Converts numeric strings of the final expression to numbers
 	function stringConverter(array: (string | number)[]) {
 
-		// Test code
-		// const str = '2+2+7*3/5-3+2*2*2*6-2+√6-9+2';
-		// let m = 0;
-		// while (m < str.length) {
-		// 	array.push(str[m]);
-		// 	m++;
-		// }
-		// array = ['2','+','2','+','7','*','3','/','5','-','3','+','2','*','2','*','2','*','6','-','2','+','','√','6','-','9','+','2'];
-		//
-
 		let arr: (string | number)[] = [];
 		let i = 0;
 
 		while (i < array.length) {
 			if (array[i] != '')  {
 				arr = Number(array[i]) ? [...arr, +array[i]] : [...arr, array[i]];
-				// if (array[i] == '-' && (i == 0 || array[i - 1] != +array[i - 1])) {
-				// 	arr[i] += arr
-				// }
 			}
 			i++;
 		}
@@ -66,6 +53,7 @@ export default function Operators() {
 		// If a negative number is entered but the temporaryBuffer is empty and the finalExpression's first element is a '-' sign
 		if (!temporaryBuffer && (sign == '-')) {
 			setTemporaryBuffer(sign);
+
 			// To avoid repeating the '-' sign
 			return;
 		}
@@ -85,15 +73,17 @@ export default function Operators() {
         	if (finalExpression[r] == '√') {
 				if (finalExpression[r + 1] != '') {
 					const rad = Math.sqrt(finalExpression[r + 1] as number);
+
+					if (isNaN(rad)) {
+						setFinalExpession('Error');	
+						return;
+					}
+
 					finalExpression.splice(r, 1);
 					finalExpression[r] = rad;
 					r = 0;
 				}
 
-				else {
-					setFinalExpession('Error');	
-					return;
-				}
 			}
         }
 
@@ -109,6 +99,13 @@ export default function Operators() {
 	
 			else if (finalExpression[i] == '/') {		
 				const dev = (finalExpression[i - 1] as number) / (finalExpression[i + 1] as number);
+
+				// Division by zero stops function execution
+				if (!Number.isFinite(dev)) {
+					setFinalExpession('Error');	
+					return;
+				}
+
 				finalExpression.splice(i, 2);
 				finalExpression[i - 1] = dev;
 				i = 0;
@@ -132,7 +129,6 @@ export default function Operators() {
 				m = 0;
 			}
 		}
-		console.log(finalExpression);
 		setFinalExpession(finalExpression);
 
 	} 
