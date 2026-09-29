@@ -14,6 +14,8 @@ export default function Operators() {
 	const clearTemporaryBuffer = useCalculatorStore((state) => state.clearTemporaryBuffer);
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
+	const showHello = useCalculatorStore((state) => state.showHello);
+	const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     // Clear the expression and output the result
     function resultOutput() {
@@ -56,8 +58,13 @@ export default function Operators() {
 	}
 
 	function inputCharacters(sign: string) {
+		if (showHello) setShowHello(false);
+
+		// If the first sign is neither '-' nor '√', the function stops executing
+		if (!finalExpression.length && !temporaryBuffer && sign != '-' && sign != '√') return;
+
 		// If a negative number is entered but the temporaryBuffer is empty and the finalExpression's first element is a '-' sign
-		if (!temporaryBuffer && (sign == '-') && (finalExpression[0] == '-')) {
+		if (!temporaryBuffer && (sign == '-')) {
 			setTemporaryBuffer(sign);
 			// To avoid repeating the '-' sign
 			return;
