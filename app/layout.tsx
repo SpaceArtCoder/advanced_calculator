@@ -6,7 +6,8 @@ import "./globals.scss";
 const digitalFont = localFont({
   src: "./fonts/BitcountPropSingle-VariableFont_CRSV,ELSH,ELXP,slnt,wght.ttf",
   variable: "--font-digital",
-  preload: false,            // Font preloading is disabled because the font should only be displayed after clicking a specific button
+  // Font preloading is disabled because the font should only be displayed after clicking a specific button
+  preload: false,            
 })
 
 

@@ -9,7 +9,6 @@ export default function Keyboard() {
             <Control />
             <Operands />
             <Operators />
-            
         </div>
     )
 }

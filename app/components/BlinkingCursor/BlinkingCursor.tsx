@@ -9,6 +9,7 @@ export default function BlinkingCursor() {
 
     useEffect(() => {
         const interval = setInterval(() => {
+            // Every 0.5 seconds the cursor appears and disappears
             setVisibility((current) => !current)
         }, 500);
         

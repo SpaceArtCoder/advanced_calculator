@@ -23,6 +23,7 @@ export default function OnOff() {
         togglePower();
         setShowHello(true);
 
+        // Clears the fields if they are not empty
         if (finalExpression.length || temporaryBuffer) {
             clearFinalExpression();
             clearTemporaryBuffer();
