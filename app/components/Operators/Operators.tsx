@@ -5,16 +5,24 @@ import { useCalculatorStore } from "@/app/store/useCalculatorStore";
 
 export default function Operators() {
 
-    // Arithmetic signs shown on the keyboard
+    // Arithmetic operators shown on the keyboard
     const signArray = ['+','-','*','/','√'];
+
     const setFinalExpession = useCalculatorStore((state) => state.setFinalExpression);
+
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
+
 	const temporaryBuffer = useCalculatorStore((state) => state.temporaryBuffer);
+
 	const setTemporaryBuffer = useCalculatorStore((state) => state.setTemporaryBuffer);
+
 	const clearTemporaryBuffer = useCalculatorStore((state) => state.clearTemporaryBuffer);
+
     // Contains everything entered by user
     const finalExpression = useCalculatorStore((state) => state.finalExpression);
+
 	const showHello = useCalculatorStore((state) => state.showHello);
+
 	const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
     // Clear the expression and output the result
@@ -47,7 +55,7 @@ export default function Operators() {
 	function inputCharacters(sign: string) {
 		if (showHello) setShowHello(false);
 
-		// If the first sign is neither '-' nor '√', the function stops executing
+		// If the first operator is neither '-' nor '√', the function stops executing
 		if (!finalExpression.length && !temporaryBuffer && sign != '-' && sign != '√') return;
 
 		// If a negative number is entered but the temporaryBuffer is empty and the finalExpression's first element is a '-' sign
