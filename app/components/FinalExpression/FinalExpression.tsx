@@ -10,7 +10,7 @@ export default function FinalExpression() {
     
     
     return (
-        // The blinking cursor is displayed only when the field is empty
+        // The blinking cursor is displayed only when the input field is empty
         <output className={styles.input}>{temporaryBuffer || finalExpression.length ? [...finalExpression, temporaryBuffer] : <BlinkingCursor />}</output>
     )
 }

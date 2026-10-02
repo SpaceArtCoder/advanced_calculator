@@ -8,13 +8,13 @@ import { useEffect } from "react"
 
 export default function Screen() {
 
-    // Read state and grab actions
     // Calculator power status
     const power = useCalculatorStore((state) => state.power);
 
     // Greeting message display control
     const setShowHello = useCalculatorStore((state) => state.setShowHello);
 
+    // Greeting message content
     const showHello = useCalculatorStore((state) => state.showHello);
 
 
@@ -37,10 +37,7 @@ export default function Screen() {
     return (
         <div className={styles.screen}>
             {/* Displays a welcome message on startup until operands or operators are entered*/}
-            {power && !showHello ? <FinalExpression /> : power && showHello ? <Greeting power = {power} showHello = {showHello}/> : null}
-            
-            
-            
+            {power && !showHello ? <FinalExpression /> : power && showHello ? <Greeting power = {power} showHello = {showHello}/> : null}  
         </div>
     )
 }

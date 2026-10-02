@@ -8,7 +8,7 @@ export default function Operators() {
     // Arithmetic operators shown on the keyboard
     const signArray = ['+','-','*','/','√'];
 
-    const setFinalExpession = useCalculatorStore((state) => state.setFinalExpression);
+    const setFinalExpression = useCalculatorStore((state) => state.setFinalExpression);
 
     const clearFinalExpression = useCalculatorStore((state) => state.clearFinalExpression);
 
@@ -66,8 +66,8 @@ export default function Operators() {
 			return;
 		}
 
-		setFinalExpession(temporaryBuffer);
-		setFinalExpession(sign);
+		setFinalExpression(temporaryBuffer);
+		setFinalExpression(sign);
 		// Cleared only if the last number was entered
 		if (temporaryBuffer) clearTemporaryBuffer();
 
@@ -83,7 +83,7 @@ export default function Operators() {
 					const rad = Math.sqrt(finalExpression[r + 1] as number);
 
 					if (isNaN(rad)) {
-						setFinalExpession('Error');	
+						setFinalExpression('Error');	
 						return;
 					}
 
@@ -110,7 +110,7 @@ export default function Operators() {
 
 				// Division by zero stops function execution
 				if (!Number.isFinite(dev)) {
-					setFinalExpession('Error');	
+					setFinalExpression('Error');	
 					return;
 				}
 
@@ -137,7 +137,7 @@ export default function Operators() {
 				m = 0;
 			}
 		}
-		setFinalExpession(finalExpression);
+		setFinalExpression(finalExpression);
 
 	} 
   
